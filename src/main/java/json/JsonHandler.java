@@ -1,24 +1,37 @@
 package json;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URL;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import java.net.URLConnection;
 
 public class JsonHandler {
 
     public JsonHandler() {
     }
 
-    public void buscarCEP(int CEP) throws Exception {
 
-        JSONParser receptor = new JSONParser();
-        String link = "viacep.com.br/ws/" + CEP + "/json/";
-        System.out.println("JSON: " +link);
-        JSONObject objeto = (JSONObject) receptor.parse(link);
-        System.out.println("LEU");
-        String rua = (String) objeto.get("logradouro");
-        System.out.println(rua);
+    public String buscarCEP(int CEP) throws Exception {
+         String json;
 
+        try {
+            URL url = new URL("http://viacep.com.br/ws/"+ CEP +"/json");
+            URLConnection urlConnection = url.openConnection();
+            InputStream is = urlConnection.getInputStream();
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+            StringBuilder jsonSb = new StringBuilder();
+
+            br.lines().forEach(l -> jsonSb.append(l.trim()));
+
+            json = jsonSb.toString();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(json);
+       return json;
+        
     }
-
 }

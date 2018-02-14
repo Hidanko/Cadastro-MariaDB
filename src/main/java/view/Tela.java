@@ -1,12 +1,13 @@
 package view;
 
 import backend.CpfValidator;
+import backend.DatabaseHandler;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import backend.JsonHandler;
+import model.Cadastro;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
 
 public class Tela extends javax.swing.JFrame {
 
@@ -57,7 +58,9 @@ public class Tela extends javax.swing.JFrame {
         textObs = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         textLocalidade = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        botaoSalvar = new javax.swing.JButton();
+        textERRO = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -96,7 +99,13 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel11.setText("Observações:");
 
+        textNome.setText("Nome Teste");
+
         textCpf.setText("08785581950");
+
+        textTelefone.setText("2345678");
+
+        textEmail.setText("Email Teste");
 
         textCep.setText("88341592");
 
@@ -107,12 +116,26 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        textLogradouro.setText("Rua Teste");
+
+        textNumero.setText("5");
+
+        textBairro.setText("Bairro Teste");
+
+        textComplemento.setText("Complemento Teste");
+
+        textUF.setText("SC");
+
+        textObs.setText("Teste OBS");
+
         jLabel12.setText("Cidade:");
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        textLocalidade.setText("Cidade Teste");
+
+        botaoSalvar.setText("Salvar");
+        botaoSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botaoSalvarActionPerformed(evt);
             }
         });
 
@@ -123,8 +146,23 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel5))
+                        .addGap(46, 46, 46)
+                        .addComponent(textCep, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botaoValidarCEP))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(textERRO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -173,22 +211,7 @@ public class Tela extends javax.swing.JFrame {
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(textUF, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(36, 36, 36))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel5))
-                        .addGap(46, 46, 46)
-                        .addComponent(textCep, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(botaoValidarCEP))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton2)
-                .addGap(70, 70, 70))
+                        .addGap(36, 36, 36))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,10 +262,20 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(textObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(jButton2))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoSalvar)
+                    .addComponent(textERRO)))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jButton1.setText("Limpar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 90, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -256,27 +289,72 @@ public class Tela extends javax.swing.JFrame {
             JSONObject objeto = (JSONObject) parser.parse(input);
 
             textLogradouro.setText((String) objeto.get("logradouro"));
-            textComplemento.setText((String)objeto.get("complemento"));
-            textBairro.setText((String)objeto.get("bairro"));
-            textUF.setText((String)objeto.get("uf"));
-            textLocalidade.setText((String)objeto.get("localidade"));
-            
-            
+            textComplemento.setText((String) objeto.get("complemento"));
+            textBairro.setText((String) objeto.get("bairro"));
+            textUF.setText((String) objeto.get("uf"));
+            textLocalidade.setText((String) objeto.get("localidade"));
+
         } catch (Exception e) {
             System.out.println("DEU ERRO");
             e.printStackTrace();
         }
     }//GEN-LAST:event_botaoValidarCEPActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      
-        try {
-            TESTE = CpfValidator.validar(textCpf.getText());
-        } catch (Exception ex) {
-            ex.printStackTrace();
+    private void botaoSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSalvarActionPerformed
+        // Se o Cpf for válido -> Pegar os dados e enviar para o banco
+        // Senão -> Mensagem de erro
+        
+        // Adicionar erros para campos vazios
+        if (CpfValidator.validar(textCpf.getText())) {
+            Cadastro cadastro = new Cadastro();
+            cadastro.setNome(textNome.getText());
+            cadastro.setCPF(textCpf.getText());
+            cadastro.setTelefone(Integer.parseInt(textTelefone.getText()));
+            cadastro.setEmail(textEmail.getText());
+            cadastro.setLogradouro(textLogradouro.getText());
+            cadastro.setNumero(Integer.parseInt(textNumero.getText()));
+            cadastro.setComplemento(textComplemento.getText());
+            cadastro.setBairro(textBairro.getText());
+            cadastro.setLocalidade(textLocalidade.getText());
+            cadastro.setUF(textUF.getText());
+            cadastro.setObs(textObs.getText());
+
+            DatabaseHandler dh = DatabaseHandler.getInstance();
+            // Se o banco conetar -> tentar inserir os valores
+            // Senão -> mensagem de erro
+            if (dh.connectar()) {
+                // Se o banco inserir o cadastro -> mensagem do IF
+                // Senão -> mensagem de erro
+                if (dh.inserir(cadastro)) {
+                    textERRO.setText("Cadastro adicionado com sucesso!");
+                } else {
+                    textERRO.setText("ERRO: NÃO FOI POSSIVEL ADICIONAR AO BANCO");
+                }
+            } else {
+                textERRO.setText("ERRO: IMPOSSIVEL CONECTAR AO BANCO");
+            }
+
+        } else {
+            textERRO.setText("ERRO: CPF INVÁLIDO");
         }
-        System.out.println(TESTE);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_botaoSalvarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        textBairro.setText("");
+        textCep.setText("");
+        textComplemento.setText("");
+        textCpf.setText("");
+        textERRO.setText("");
+        textEmail.setText("");
+        textLocalidade.setText("");
+        textLogradouro.setText("");
+        textNome.setText("");
+        textNumero.setText("");
+        textObs.setText("");
+        textTelefone.setText("");
+        textUF.setText("");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,7 +382,7 @@ public class Tela extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -314,8 +392,9 @@ UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoSalvar;
     private javax.swing.JButton botaoValidarCEP;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -334,6 +413,7 @@ UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
     private javax.swing.JTextField textCep;
     private javax.swing.JTextField textComplemento;
     private javax.swing.JTextField textCpf;
+    private javax.swing.JLabel textERRO;
     private javax.swing.JTextField textEmail;
     private javax.swing.JTextField textLocalidade;
     private javax.swing.JTextField textLogradouro;

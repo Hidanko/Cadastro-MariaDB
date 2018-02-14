@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 
 public final class CpfValidator {
 
-    public static boolean validar(String CPF) throws Exception {
+    public static boolean validar(String CPF) {
 
         if (CPF.equals("00000000000") || CPF.equals("11111111111")
                 || CPF.equals("22222222222") || CPF.equals("33333333333")

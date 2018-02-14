@@ -56,8 +56,27 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                          <Component id="textCep" min="-2" pref="203" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel4" min="-2" pref="46" max="-2" attributes="0"/>
+                              <Component id="botaoValidarCEP" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="textERRO" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="botaoSalvar" min="-2" pref="97" max="-2" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -125,26 +144,7 @@
                           </Group>
                           <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                          <Component id="textCep" min="-2" pref="203" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel4" min="-2" pref="46" max="-2" attributes="0"/>
-                              <Component id="botaoValidarCEP" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -209,7 +209,10 @@
                       <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
-                  <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="botaoSalvar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="textERRO" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
               </Group>
           </Group>
         </DimensionLayout>
@@ -271,6 +274,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textNome">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Nome Teste"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textCpf">
           <Properties>
@@ -278,8 +284,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textTelefone">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="2345678"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textEmail">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Email Teste"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textCep">
           <Properties>
@@ -295,16 +307,34 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="textLogradouro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Rua Teste"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textNumero">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="5"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textBairro">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bairro Teste"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textComplemento">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Complemento Teste"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textUF">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="SC"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textObs">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Teste OBS"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -312,16 +342,34 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textLocalidade">
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="jButton2"/>
+            <Property name="text" type="java.lang.String" value="Cidade Teste"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="botaoSalvar">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salvar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoSalvarActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="textERRO">
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="jButton1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Limpar"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="610" y="340" width="90" height="-1"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

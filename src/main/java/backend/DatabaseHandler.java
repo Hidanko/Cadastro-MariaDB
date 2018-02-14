@@ -1,5 +1,11 @@
 package backend;
 
+import java.awt.Desktop;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -13,10 +19,11 @@ public class DatabaseHandler {
 
     private static String endereco;
     private static Connection connection;
-    private  PreparedStatement command;
-    private static ResultSet data;
+    private PreparedStatement command;
+    private static ResultSet rs;
     private static DatabaseHandler INSTANCE;
     private boolean conectado;
+    private StringBuilder birl;
 
     public static DatabaseHandler getInstance() {
         if (INSTANCE == null) {
@@ -25,7 +32,8 @@ public class DatabaseHandler {
         return INSTANCE;
     }
 
-    public boolean connectar() {
+    public boolean conectar() {
+        conectado = false;
         endereco = "jdbc:mariadb://localhost:3306/mariadb";
         try {
             connection = DriverManager.getConnection(endereco, "root", "");
@@ -34,7 +42,7 @@ public class DatabaseHandler {
             Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-
+        conectado = true;
         return true;
     }
 
@@ -60,5 +68,65 @@ public class DatabaseHandler {
             return false;
         }
         return true;
+    }
+
+    public boolean conectado() {
+        conectar();
+        return conectado;
+    }
+
+    public void imprimir() {
+        try {
+            command = connection.prepareStatement("SELECT * FROM cadastros");
+            rs = command.executeQuery();
+            
+            int contador = 0;
+            while (new File ("banco"+contador+".txt").exists()){
+                contador++;
+            }
+            String arquivoTxt = "banco"+contador+".txt";
+            
+            FileWriter fw = new FileWriter(arquivoTxt, true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+
+            while (rs.next()) {
+                birl = new StringBuilder();
+                birl.append(rs.getString("Nome"));
+                birl.append('#');
+                birl.append(rs.getString("CPF"));
+                birl.append('#');
+                birl.append(rs.getString("Telefone"));
+                birl.append('#');
+                birl.append(rs.getString("Email"));
+                birl.append('#');
+                birl.append(rs.getString("Logradouro"));
+                birl.append('#');
+                birl.append(rs.getString("Numero"));
+                birl.append('#');
+                birl.append(rs.getString("Complemento"));
+                birl.append('#');
+                birl.append(rs.getString("Bairro"));
+                birl.append('#');
+                birl.append(rs.getString("Localidade"));
+                birl.append('#');
+                birl.append(rs.getString("UF"));
+                birl.append('#');
+                birl.append(rs.getString("Obs"));
+                
+                pw.println(birl);
+            }
+
+            pw.close();
+            
+            Desktop.getDesktop().open(new File(arquivoTxt));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERRO NO BANCO");
+        } catch (IOException ex) {
+            Logger.getLogger(DatabaseHandler.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("ERRO CRIANDO ARQUIVO TXT");
+        }
     }
 }

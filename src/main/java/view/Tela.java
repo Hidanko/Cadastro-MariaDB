@@ -60,6 +60,7 @@ public class Tela extends javax.swing.JFrame {
         textLocalidade = new javax.swing.JTextField();
         botaoSalvar = new javax.swing.JButton();
         textERRO = new javax.swing.JLabel();
+        botaoImprimir = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -139,6 +140,20 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        botaoImprimir.setText("Imprimir banco");
+        botaoImprimir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoImprimirActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Limpar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -160,10 +175,6 @@ public class Tela extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(textERRO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel11)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(textObs))
@@ -183,7 +194,7 @@ public class Tela extends javax.swing.JFrame {
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel2Layout.createSequentialGroup()
                                                 .addComponent(textLogradouro, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(0, 55, Short.MAX_VALUE))
+                                                .addGap(0, 73, Short.MAX_VALUE))
                                             .addComponent(textNome))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -210,8 +221,18 @@ public class Tela extends javax.swing.JFrame {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel10)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(textUF, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(36, 36, 36))))
+                                        .addComponent(textUF, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(textERRO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(115, 115, 115)))
+                        .addGap(36, 36, 36))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(botaoImprimir)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botaoSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -261,21 +282,16 @@ public class Tela extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textObs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botaoImprimir)
                     .addComponent(botaoSalvar)
-                    .addComponent(textERRO)))
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                .addComponent(textERRO))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        jButton1.setText("Limpar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 340, 90, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -304,7 +320,6 @@ public class Tela extends javax.swing.JFrame {
         // Se o Cpf for válido -> Pegar os dados e enviar para o banco
         // Senão -> Mensagem de erro
         
-        // Adicionar erros para campos vazios
         if (CpfValidator.validar(textCpf.getText())) {
             Cadastro cadastro = new Cadastro();
             cadastro.setNome(textNome.getText());
@@ -322,7 +337,7 @@ public class Tela extends javax.swing.JFrame {
             DatabaseHandler dh = DatabaseHandler.getInstance();
             // Se o banco conetar -> tentar inserir os valores
             // Senão -> mensagem de erro
-            if (dh.connectar()) {
+            if (dh.conectar()) {
                 // Se o banco inserir o cadastro -> mensagem do IF
                 // Senão -> mensagem de erro
                 if (dh.inserir(cadastro)) {
@@ -355,6 +370,16 @@ public class Tela extends javax.swing.JFrame {
         textUF.setText("");
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botaoImprimirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoImprimirActionPerformed
+        if (DatabaseHandler.getInstance().conectado()){
+            DatabaseHandler.getInstance().imprimir();
+            
+        }
+        else{
+            textERRO.setText("ERRO: Banco indisponível");
+        }
+    }//GEN-LAST:event_botaoImprimirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -392,6 +417,7 @@ public class Tela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoImprimir;
     private javax.swing.JButton botaoSalvar;
     private javax.swing.JButton botaoValidarCEP;
     private javax.swing.JButton jButton1;
